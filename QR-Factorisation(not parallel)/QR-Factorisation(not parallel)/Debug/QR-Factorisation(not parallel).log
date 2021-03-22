@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\brens\onedrive\рабочий стол\научная работа\qr-factorisation(not parallel)\qr-factorisation(not parallel)\main.cpp(15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\brens\onedrive\рабочий стол\научная работа\qr-factorisation(not parallel)\qr-factorisation(not parallel)\main.cpp(21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\brens\onedrive\рабочий стол\научная работа\qr-factorisation(not parallel)\qr-factorisation(not parallel)\main.cpp(63): warning C4018: '<': signed/unsigned mismatch
+c:\users\brens\onedrive\рабочий стол\научная работа\qr-factorisation(not parallel)\qr-factorisation(not parallel)\main.cpp(70): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\brens\onedrive\рабочий стол\научная работа\qr-factorisation(not parallel)\qr-factorisation(not parallel)\main.cpp(71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  QR-Factorisation(not parallel).vcxproj -> C:\Users\brens\OneDrive\Рабочий стол\научная работа\QR-Factorisation(not parallel)\Debug\QR-Factorisation(not parallel).exe
+  QR-Factorisation(not parallel).vcxproj -> C:\Users\brens\OneDrive\Рабочий стол\научная работа\QR-Factorisation(not parallel)\Debug\QR-Factorisation(not parallel).pdb (Partial PDB)
