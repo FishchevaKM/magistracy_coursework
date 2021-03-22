@@ -10,40 +10,46 @@ void main()
 {
 	setlocale(LC_ALL, "Russian");
 	int a = 0;
-	cout << "Input a matrix rank" << endl;
+	cout << "Input matrix rank" << endl;
 	cin >> a;
 	srand(time(0));
-	vector<float> matrix(a*a);
+	vector<float> matrix(a*a);// ({ 1,2,4,3,3,2,4,1,3 }); // базовая матрица, она будет подаваться на вход
 	vector<float> Q(matrix.size());
 	vector<float> R(matrix.size());
-	//Randon generate matrix elements
+	cout << "Input matrix elements" << endl;
 	for (int i = 0; i < a; i++) {
+		for (int j = 0; j < a; j++) {
+			cin >> matrix[i*a + j];
+		}
+	}
+	/*for (int i = 0; i < a; i++) {
 		for (int j = 0; j < a; j++) {
 			matrix[i*a + j] = rand() % 100 - rand() % 100;
 		}
 	}
-	//cout << "matrix" << endl;
-	/*for (int i = 0; i < a; i++) {
-	for (int j = 0; j < a; j++) {
-	cout << matrix[i*a + j] << "\t";
-	}
-	cout << endl;
+	//cout << "Матрица, которую требуется разложить" << endl;
+	for (int i = 0; i < a; i++) {
+		for (int j = 0; j < a; j++) {
+			cout << matrix[i*a + j] << "\t";
+		}
+		cout << endl;
 	}
 	*/
 	qrFactorisation(Q, R, matrix, a);
-	cout << "runtime = " << clock() / 1000.0 << "ms" << endl; 
+	cout << "runtime = " << clock() / 1000.0 << "ms" << endl; // время работы программы   
 	system("pause");
 }
 
 void qrFactorisation(vector<float> Q, vector<float> mat, vector<float> matrix, int a) {
 	vector<float> P(matrix.size());
+	//Заполняем единичную матрицу
 	for (int i = 0; i < a; i++) {
 		Q[i * a + i] = 1;
 	}
 
 	for (int i = 0; i < a; i++) {
-		double norm = 0;
-		vector<double> tempValue(a);
+		double norm = 0; // норма темп вэлью
+		vector<double> tempValue(a); // для записи взаимно ортогональных векторов
 		for (int j = i; j < a; j++) {
 			tempValue[j - i] = -matrix[j * a + i];
 			norm += tempValue[j - i] * tempValue[j - i];
@@ -58,13 +64,13 @@ void qrFactorisation(vector<float> Q, vector<float> mat, vector<float> matrix, i
 		}
 		norm = sqrt(norm);
 
-		//Íîðìàëüçèðóåì
+		//Нормальзируем
 		if (norm > 0) {
 			for (int k = 0; k < tempValue.size(); k++) {
 				tempValue[k] /= norm;
 			}
 		}
-		//Çàïîëíÿåì P
+		//Заполняем P
 		for (int k = 0; k < a - i; k++) {
 			for (int l = 0; l < a - i; l++) {
 				if (k == l) P[k * (a)+k] = 1 - 2 * tempValue[k] * tempValue[l];
@@ -74,7 +80,7 @@ void qrFactorisation(vector<float> Q, vector<float> mat, vector<float> matrix, i
 
 
 
-		//Çàïîëíÿåì R
+		//Заполняем R
 		for (int k = i; k < a; k++) {
 			for (int l = i; l < a; l++) {
 				float tm = 0;
@@ -92,7 +98,7 @@ void qrFactorisation(vector<float> Q, vector<float> mat, vector<float> matrix, i
 		}
 
 
-		//Çàïîëíÿåì Q
+		//Заполняем Q
 
 		for (int k = 0; k < a; k++) {
 			for (int l = i; l < a; l++) {
@@ -110,28 +116,28 @@ void qrFactorisation(vector<float> Q, vector<float> mat, vector<float> matrix, i
 			}
 		}
 	}
-	/*
+
 	cout << "P" << endl;
 	for (int k = 0; k < a; k++) {
-	for (int l = 0; l < a; l++) {
-	cout << P[k*a + l] << "\t";
-	}
-	cout << endl;
+		for (int l = 0; l < a; l++) {
+			cout << P[k*a + l] << "\t";
+		}
+		cout << endl;
 	}
 	cout << "Q" << endl;
 	for (int k = 0; k < a; k++) {
-	for (int l = 0; l < a; l++) {
-	cout << Q[k*a + l] << "\t";
-	}
-	cout << endl;
+		for (int l = 0; l < a; l++) {
+			cout << Q[k*a + l] << "\t";
+		}
+		cout << endl;
 	}
 	cout << "R" << endl;
 	for (int k = 0; k < a; k++) {
-	for (int l = 0; l < a; l++) {
-	cout << matrix[k*a + l] << "\t";
+		for (int l = 0; l < a; l++) {
+			cout << matrix[k*a + l] << "\t";
+		}
+		cout << endl;
 	}
-	cout << endl;
-	}
-	*/
+
 
 }
